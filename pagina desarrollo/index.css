@@ -1,0 +1,549 @@
+/* IMPORTACIÓN DE FUENTES GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap');
+
+/* =========================================
+   VARIABLES Y ESTILOS GENERALES
+========================================= */
+:root {
+    /* Paleta Mejorada */
+    --turquesa-principal: #5bbcb2; 
+    --turquesa-oscuro: #2c7a7b;    
+    --turquesa-claro: #b2f5ea;     
+    --turquesa-muy-claro: #eaf6f5; /* Mantenido por compatibilidad */
+    --fondo-suave: #f0f9f8;       
+    --fondo-gris: #fafafa;         /* Mantenido por compatibilidad */
+    --blanco-puro: #ffffff;
+    --blanco: #ffffff;             /* Mantenido por compatibilidad */
+    --texto-oscuro: #2d3748;      
+    --texto-claro: #718096;       
+    
+    /* Variables de diseño */
+    --sombra-suave: 0 4px 15px rgba(0,0,0,0.05);
+    --sombra-premium: 0 10px 30px rgba(44, 122, 123, 0.15);
+    --curva: 12px;
+}
+
+/* =========================================
+   COMPORTAMIENTO DE TODA LA PÁGINA
+========================================= */
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    /* ¡AQUÍ ACTIVAMOS LA FUENTE NUEVA PARA EL TEXTO! */
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--fondo-gris);
+    color: var(--texto-oscuro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7; /* Un poco más de aire entre líneas */
+}
+
+/* ¡AQUÍ ACTIVAMOS LA FUENTE FUERTE PARA LOS TÍTULOS! */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--texto-oscuro);
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   BOTONES GENERALES (Con más diseño)
+========================================= */
+button {
+    background-color: var(--turquesa-principal);
+    color: var(--blanco-puro);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px; /* Bordes un poco más modernos */
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif; /* Letra fuerte en botones */
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(91, 188, 178, 0.3); /* Sombra turquesa que le da vida */
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--turquesa-oscuro);
+    transform: translateY(-2px); /* El botón se levanta un poquito */
+    box-shadow: 0 6px 18px rgba(44, 122, 123, 0.4);
+}
+
+/* =========================================
+   HEADER Y NAVEGACIÓN
+========================================= */
+header {
+    background-color: var(--blanco-puro);
+    padding: 20px 0;
+    box-shadow: var(--sombra-suave);
+    position: sticky; /* Hace que el menú persiga al usuario al bajar */
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center; 
+    gap: 4px; 
+    font-size: 24px;
+    font-weight: 800; /* Más grueso */
+    color: var(--turquesa-oscuro);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo-img {
+    height: 80px; 
+    width: auto;  
+    border-radius: 0px; 
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--texto-claro);
+    margin-left: 25px;
+    font-weight: 600;
+    position: relative; /* Necesario para la animación */
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--turquesa-principal);
+}
+
+/* Línea animada en el menú */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--turquesa-principal);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   SECCIÓN HERO 
+========================================= */
+/* =========================================
+   SECCIÓN HERO (Ajustada y apenitas oscura)
+========================================= */
+#hero {
+    /* El 0.2 le da solo un 20% de oscuridad, súper sutil */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('imagenes/fondo\ inicio.png');
+    background-size: cover;
+    background-position: center;
+    /* Quité el 'fixed' para que la imagen se acomode mejor al tamaño real de tu pantalla */
+    text-align: center;
+    padding: 130px 20px; /* Un poco menos de alto para que encuadre mejor tu diseño */
+}
+
+#hero h1 {
+    font-size: 3.5rem; 
+    color: var(--turquesa-oscuro); /* ¡Volvemos a tu turquesa! */
+    margin-bottom: 40px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    /* Resplandor blanco para que el texto oscuro destaque sobre la foto clara */
+    text-shadow: 0 2px 15px rgba(255, 255, 255, 0.9); 
+}
+
+#hero button {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   SECCIÓN "Somos CL"
+========================================= */
+section[id="Somos CL"] {
+    padding: 100px 0;
+    background-color: var(--blanco-puro);
+}
+
+section[id="Somos CL"] .container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Un poco más de separación */
+    flex-wrap: wrap;
+}
+
+.img-container {
+    flex: 1;
+    min-width: 300px;
+    height: 380px; /* Un pelín más alto */
+    border-radius: var(--curva);
+    background-color: #e0e0e0; 
+    background-image: url('imagenes/friendly-secretary-answering-phone-call-using-computer-office_232070-14321.jpg'); 
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--sombra-premium); /* Le da aspecto de foto encuadrada */
+}
+
+.texto {
+    flex: 1;
+    min-width: 300px;
+}
+
+.texto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative; /* Para la línea decorativa */
+}
+
+/* Línea decorativa debajo del título */
+.texto h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    background-color: var(--turquesa-principal);
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.color-acento {
+    color: var(--turquesa-principal);
+    display: inline; 
+}
+
+.texto p {
+    color: var(--texto-claro);
+    font-size: 1.15rem;
+}
+
+/* =========================================
+   SECCIÓN MÁS SOBRE NOSOTROS
+========================================= */
+#Mas-Sobre-Nostros {
+    padding: 100px 0;
+    background-image: linear-gradient(rgba(234, 246, 245, 0.6), rgba(234, 246, 245, 0.6)), url('imagenes/fondo-abstracto-estilo-papel_23-2150741093.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+}
+
+#Mas-Sobre-Nostros h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: var(--turquesa-oscuro);
+}
+
+.profesionales {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.carta {
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    padding: 40px 30px; /* Más aire interno */
+    border-radius: var(--curva);
+    border-top: 5px solid var(--turquesa-principal); 
+    box-shadow: var(--sombra-suave); 
+    text-align: center;
+    transition: all 0.4s ease; /* Transición más suave */
+}
+
+.carta:hover {
+    transform: translateY(-8px); /* Salto más notorio */
+    box-shadow: var(--sombra-premium);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.carta h3 {
+    color: var(--turquesa-oscuro);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.carta p {
+    color: var(--texto-claro);
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   PÁGINAS SECUNDARIAS (Personal, Equipo, etc)
+========================================= */
+#lista-personal, #lista-servicios, #lista-equipo {
+    padding: 80px 0;
+    background-image: linear-gradient(rgba(234, 246, 245, 0.85), rgba(234, 246, 245, 0.85)), url('fondo-turquesa-blur.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 90vh; 
+}
+
+.contenedor-marco {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: var(--sombra-premium);
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.contenedor-marco h2 {
+    font-size: 2.5rem;
+    color: var(--turquesa-oscuro);
+    margin-bottom: 15px;
+}
+
+.subtitulo {
+    color: var(--texto-claro);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.grid-personal, .grid-servicios, .grid-equipo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+}
+
+/* Tarjetas internas de las páginas secundarias */
+.tarjeta-empleado, .tarjeta-servicio, .tarjeta-equipo {
+    background-color: var(--blanco-puro);
+    padding: 25px 30px;
+    border-radius: var(--curva);
+    border-left: 5px solid var(--turquesa-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--sombra-suave);
+    transition: all 0.3s ease;
+}
+
+.tarjeta-empleado:hover, .tarjeta-servicio:hover, .tarjeta-equipo:hover {
+    border-color: var(--turquesa-oscuro);
+    transform: translateX(8px);
+    box-shadow: 0 8px 20px rgba(91, 188, 178, 0.15);
+}
+
+.info-empleado h3, .info-servicio h3, .info-equipo h3 {
+    color: var(--texto-oscuro);
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.info-empleado p, .info-servicio p, .info-equipo p {
+    color: var(--texto-claro);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.icono-servicio, .icono-equipo {
+    font-size: 3rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Botón LinkedIn específico */
+.btn-linkedin {
+    background-color: #0a66c2;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-linkedin:hover {
+    background-color: #004182;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(10, 102, 194, 0.3);
+}
+
+.volver {
+    text-align: center;
+}
+
+/* =========================================
+   SECCIÓN SERVICIOS (Botones Principales)
+========================================= */
+#Servicios {
+    padding: 100px 0;
+    background-color: var(--fondo-gris);
+    text-align: center;
+}
+
+#Servicios h2 {
+    font-size: 2.5rem;
+    color: var(--turquesa-oscuro);
+    margin-bottom: 15px;
+}
+
+#Servicios p {
+    color: var(--texto-claro);
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+.contenedor-botones-servicios {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 30px; 
+    flex-wrap: wrap; 
+}
+
+.contenedor-botones-servicios a {
+    text-decoration: none; 
+}
+
+.contenedor-botones-servicios button {
+    padding: 18px 45px;
+    font-size: 1.15rem;
+}
+
+/* =========================================
+   SECCIÓN CONTACTOS / FINAL (¡Intacta como pediste!)
+========================================= */
+#contacto-final {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f9fafa; 
+    background-image: radial-gradient(circle at center, rgba(91, 188, 178, 0.15) 0%, rgba(255,255,255,0) 70%);
+    border-top: 1px solid #e0f2f1;
+}
+
+#contacto-final h2 {
+    font-size: 2.5rem;
+    color: var(--turquesa-oscuro);
+    margin-bottom: 10px;
+}
+
+#contacto-final .subtitulo {
+    color: var(--texto-claro);
+    margin-bottom: 40px;
+}
+
+.contacto-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.contacto-tarjeta {
+    background-color: white;
+    padding: 25px 35px;
+    border-radius: 12px;
+    border-bottom: 4px solid var(--turquesa-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 300px;
+}
+
+.contacto-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(91, 188, 178, 0.2);
+}
+
+.contacto-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: var(--texto-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.contacto-info a {
+    text-decoration: none;
+    color: var(--texto-oscuro);
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.contacto-info a:hover {
+    color: var(--turquesa-principal);
+}
+
+.redes-titulo {
+    font-size: 1.5rem;
+    color: var(--texto-oscuro);
+    margin-bottom: 30px;
+}
+
+.redes-botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-red {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white !important;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+}
+
+.btn-red:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.btn-instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+.btn-facebook { background-color: #1877F2; }
+.btn-linkedin { background-color: #0A66C2; }
+
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+    background-color: var(--turquesa-oscuro);
+    color: var(--blanco-puro);
+    text-align: center;
+    padding: 25px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
