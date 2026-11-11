@@ -1,223 +1,1131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - Compromiso Laboral</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios a Disposición — Compromiso Laboral</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+/* =========================================================
+   ARCHIVO: styles.css
+   Hoja de estilos unificada — Compromiso Laboral
+   ========================================================= */
+
+:root {
+  --teal-900: #0c4a46;
+  --teal-800: #115e59;
+  --teal-700: #0f766e;
+  --teal-600: #0d9488;
+  --teal-500: #14b8a6;
+  --teal-400: #2dd4bf;
+  --teal-200: #99f6e4;
+  --teal-100: #ccfbf1;
+  --teal-50:  #f0fdfa;
+  --bg-page:  #eaf6f5;
+  --surface:  #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-soft: #d5efec;
+  --shadow-card: 0 10px 25px -5px rgba(15, 118, 110, 0.07), 0 4px 10px -2px rgba(15, 118, 110, 0.04);
+  --shadow-hover: 0 18px 32px -6px rgba(15, 118, 110, 0.14), 0 6px 14px -3px rgba(15, 118, 110, 0.07);
+  --radius-card: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Encabezado y Navegación */
+.site-header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--border-soft);
+  box-shadow: 0 2px 10px rgba(15, 118, 110, 0.04);
+}
+
+.nav-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--teal-700);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-link.active-nav {
+  color: var(--teal-700);
+  background: var(--teal-50);
+}
+
+/* Contenedor Principal y Encabezados */
+.main-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 24px 72px;
+}
+
+.back-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: #ffffff;
+  color: var(--teal-800);
+  border: 1px solid var(--border-soft);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: var(--teal-700);
+  color: #ffffff;
+  border-color: var(--teal-700);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal-700);
+  background: var(--teal-100);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--teal-800);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+/* Barra de filtro rápido */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.filter-chip {
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  padding: 7px 15px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  background: var(--teal-700);
+  color: #ffffff;
+  border-color: var(--teal-700);
+}
+
+/* =========================================================
+   SECCIONES DE PORTADA (index.html)
+   ========================================================= */
+.index-hero-banner {
+  background:
+    radial-gradient(circle at 10% 80%, rgba(20, 184, 166, 0.22) 0%, transparent 40%),
+    radial-gradient(circle at 90% 20%, rgba(15, 118, 110, 0.24) 0%, transparent 42%),
+    linear-gradient(135deg, #cbd5e1 0%, #dbeafe 30%, #ccfbf1 70%, #b2f5ea 100%);
+  border-radius: 18px;
+  padding: 64px 24px;
+  text-align: center;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 40px;
+}
+
+.index-hero-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: var(--teal-800);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+
+.index-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-600);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 11px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.25);
+  transition: all 0.2s ease;
+}
+
+.index-hero-btn:hover {
+  background: var(--teal-800);
+  transform: translateY(-2px);
+}
+
+.somos-section {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 44px 36px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-card);
+}
+
+.somos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 36px;
+  align-items: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.somos-img-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px -6px rgba(15, 118, 110, 0.18);
+  border: 3px solid var(--teal-100);
+}
+
+.somos-img-wrap img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.somos-heading {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.somos-heading span {
+  color: var(--teal-500);
+}
+
+.somos-divider {
+  width: 48px;
+  height: 4px;
+  background: var(--teal-500);
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.somos-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.mas-sobre-band {
+  background:
+    radial-gradient(circle at 12% 35%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.22) 18%, transparent 18.5%),
+    radial-gradient(circle at 12% 35%, rgba(13, 148, 136, 0.14) 0%, rgba(13, 148, 136, 0.14) 32%, transparent 32.5%),
+    radial-gradient(circle at 88% 85%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 24%, transparent 24.5%),
+    linear-gradient(135deg, #76e4dc 0%, #81e6d9 50%, #5eead4 100%);
+  border-radius: 20px;
+  padding: 52px 28px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #5eead4;
+}
+
+.mas-sobre-title {
+  text-align: center;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--teal-900);
+  margin-bottom: 32px;
+}
+
+.mas-sobre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.mas-card {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 14px;
+  border-top: 4px solid var(--teal-600);
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 12px 24px -6px rgba(12, 74, 70, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.mas-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 32px -6px rgba(12, 74, 70, 0.22);
+}
+
+.mas-card-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--teal-800);
+}
+
+.mas-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 280px;
+}
+
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--teal-600);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 7px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.info-btn:hover {
+  background: var(--teal-800);
+  transform: scale(1.04);
+}
+
+.enlaces-band {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 40px 24px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-card);
+}
+
+.enlaces-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.enlace-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-500));
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enlace-pill-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.3);
+}
+
+.contactos-band {
+  background: linear-gradient(180deg, var(--teal-50) 0%, #ffffff 100%);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.contactos-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 680px;
+  margin: 28px auto 36px;
+}
+
+.contacto-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  border-bottom: 4px solid var(--teal-500);
+  padding: 22px 20px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.contacto-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contacto-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.contacto-value:hover {
+  color: var(--teal-700);
+}
+
+.redes-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.redes-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.94;
+}
+
+.social-ig {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-fb {
+  background: #1877F2;
+}
+
+/* =========================================================
+   TARJETAS DE INFRAESTRUCTURA Y SERVICIOS (infraestructura.html / servicios.html)
+   ========================================================= */
+.cards-grid,
+.infra-grid,
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+}
+
+.pro-card,
+.infra-card,
+.service-card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-soft);
+  border-left: 4px solid var(--teal-500);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card {
+  border-left: 1px solid var(--border-soft);
+  border-top: 4px solid var(--teal-500);
+}
+
+.pro-card:hover,
+.infra-card:hover,
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-left-color: var(--teal-700);
+  border-top-color: var(--teal-700);
+}
+
+.card-top,
+.infra-card-top,
+.service-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.service-header {
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--teal-50);
+  border: 1px solid var(--teal-100);
+  color: var(--teal-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.22s ease;
+}
+
+.pro-card:hover .icon-box,
+.infra-card:hover .icon-box,
+.service-card:hover .icon-box,
+.mas-card:hover .icon-box {
+  background: var(--teal-700);
+  color: #ffffff;
+  border-color: var(--teal-700);
+}
+
+.emoji-fallback {
+  display: none;
+}
+
+.card-title,
+.infra-title,
+.service-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.service-title {
+  margin-bottom: 0;
+}
+
+.card-desc,
+.infra-desc,
+.service-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.card-footer,
+.infra-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.study-tag {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--teal-800);
+  background: var(--teal-50);
+  border: 1px solid var(--teal-200);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   TARJETAS DE NUESTRO PERSONAL CENTRADAS CON LOGO SVG (personal.html)
+   ========================================================= */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.staff-card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-soft);
+  border-top: 4px solid var(--teal-500);
+  padding: 26px 20px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-top-color: var(--teal-700);
+}
+
+.staff-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--teal-50);
+  color: var(--teal-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--teal-100);
+  transition: all 0.22s ease;
+}
+
+.staff-card:hover .staff-avatar {
+  background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+  color: #ffffff;
+  border-color: var(--teal-500);
+  transform: scale(1.06);
+}
+
+.staff-name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.staff-role {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal-800);
+  background: var(--teal-50);
+  border: 1px solid var(--teal-200);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  .section-title,
+  .index-hero-title {
+    font-size: 1.65rem;
+  }
+  .nav-container {
+    justify-content: center;
+  }
+}
+
+.svg-icon {
+  display: block;
+}
+
+.staff-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+  </style>
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="logo">Compromiso Laboral</div>
-        <nav>
-            <a href="index.html#Somos-CL">¿Quiénes somos?</a>
-            <a href="index.html#Mas-Sobre-Nostros">Profesionales</a>
-        </nav>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">Compromiso Laboral</a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link ">Inicio</a>
+        <a href="infraestructura.html" class="nav-link ">Infraestructura</a>
+        <a href="servicios.html" class="nav-link active">Servicios</a>
+        <a href="personal.html" class="nav-link ">Nuestro Personal</a>
+      </nav>
     </div>
-</header>
-
-<section id="lista-servicios">
-    <div class="container">
-        
-        <div class="contenedor-marco">
-            <h2>Servicios a Disposición</h2>
-            <p class="subtitulo">Conoce en detalle todas las prestaciones médicas que ofrecemos para tu empresa.</p>
-            
-            <div class="grid-servicios">
-                <div class="tarjeta-servicio">
-                    <div class="icono-servicio">🩺</div>
-                    <div class="info-servicio">
-                        <h3>Exámenes Preocupacionales</h3>
-                        <p>Evaluaciones médicas completas para determinar la aptitud física y mental de los futuros empleados antes de su ingreso formal a la empresa.</p>
-                    </div>
-                </div>
-
-                <div class="tarjeta-servicio">
-                    <div class="icono-servicio">📊</div>
-                    <div class="info-servicio">
-                        <h3>Control de Ausentismo</h3>
-                        <p>Seguimiento médico exhaustivo en consultorio o domicilio para justificar inasistencias por enfermedad inculpable y cuidar la salud del personal.</p>
-                    </div>
-                </div>
-
-                <div class="tarjeta-servicio">
-                    <div class="icono-servicio">⚖️</div>
-                    <div class="info-servicio">
-                        <h3>Asesoramiento Médico Legal</h3>
-                        <p>Acompañamiento profesional en casos de enfermedades profesionales, accidentes de trabajo y participación en juntas médicas.</p>
-                    </div>
-                </div>
+  </header>
+  <main class="main-wrapper">
+    <div class="back-bar"><a href="index.html" class="back-btn">← Volver al Inicio</a></div>
+    <div class="section-header">
+      <span class="section-eyebrow">Soluciones para Empresas y PyMEs</span>
+      <h1 class="section-title">Servicios a Disposición</h1>
+      <p class="section-subtitle">Conoce en detalle todas las prestaciones médicas que ofrecemos para tu empresa.</p>
+    </div>
+<div class="services-grid">
+        <article class="service-card" data-service-cat="examenes">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle>
+                </svg>
+              </div>
+              <h3 class="service-title">Exámenes Preocupacionales</h3>
             </div>
+            <p class="service-desc">Evaluaciones médicas completas para determinar la aptitud física y mental de los futuros empleados antes de su ingreso formal a la empresa.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Evaluación de Ingreso</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="auditoria">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3v18h18"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Control de Ausentismo</h3>
+            </div>
+            <p class="service-desc">Seguimiento médico exhaustivo en consultorio o domicilio para justificar inasistencias por enfermedad inculpable y cuidar la salud del personal.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Auditoría y Seguimiento</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="auditoria">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Asesoramiento Médico Legal</h3>
+            </div>
+            <p class="service-desc">Acompañamiento profesional en casos de enfermedades profesionales, accidentes de trabajo y participación en juntas médicas.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Respaldo Médico-Legal</span>
+          </div>
+        </article>
 
- <div class="tarjeta-servicio">
-                    <div class="icono-servicio">🧠+💪</div>
-                    <div class="info-servicio">
-                        <h3>Examen Psicofisico</h3>
-                        <p>Evaluación integral que analiza las condiciones físicas y psicológicas del trabajador, permitiendo determinar su aptitud para desempeñar tareas específicas de manera segura y acorde a las exigencias del puesto laboral.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="examenes">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Examen Psicofísico</h3>
+            </div>
+            <p class="service-desc">Evaluación integral que analiza las condiciones físicas y psicológicas del trabajador, permitiendo determinar su aptitud para desempeñar tareas específicas de manera segura y acorde a las exigencias del puesto laboral.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Aptitud Física y Psicológica</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">📅</div>
-                    <div class="info-servicio">
-                        <h3>Examen Periodico</h3>
-                        <p>Controles médicos realizados de manera regular para monitorear el estado de salud de los trabajadores, detectar de forma temprana posibles afecciones relacionadas con la actividad laboral y promover la prevención y el cuidado continuo dentro del ámbito laboral.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="examenes">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="m9 16 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Examen Periódico</h3>
+            </div>
+            <p class="service-desc">Controles médicos realizados de manera regular para monitorear el estado de salud de los trabajadores, detectar de forma temprana posibles afecciones relacionadas con la actividad laboral y promover la prevención y el cuidado continuo dentro del ámbito laboral.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Vigilancia Periódica</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🎓</div>
-                    <div class="info-servicio">
-                        <h3>Examen de Egreso</h3>
-                        <p>Evaluación médica realizada al finalizar la relación laboral o previo a la jubilación, destinada a verificar el estado de salud del trabajador y registrar posibles afecciones vinculadas a la actividad desempeñada durante su trayectoria laboral.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="examenes">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Examen de Egreso</h3>
+            </div>
+            <p class="service-desc">Evaluación médica realizada al finalizar la relación laboral o previo a la jubilación, destinada a verificar el estado de salud del trabajador y registrar posibles afecciones vinculadas a la actividad desempeñada durante su trayectoria laboral.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Cierre de Relación Laboral</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="examenes">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path><path d="M12 7v5l3 3"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Examen Post Licencia Prolongada</h3>
+            </div>
+            <p class="service-desc">Evaluación médica efectuada luego de una ausencia laboral extendida por motivos de salud, con el objetivo de determinar la aptitud del trabajador para retomar sus tareas habituales de manera segura y acorde a sus condiciones actuales.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Reincorporación Segura</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="auditoria">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Juntas Médicas Interdisciplinarias</h3>
+            </div>
+            <p class="service-desc">Evaluaciones realizadas por un equipo profesional conformado por distintas especialidades médicas, orientadas al análisis integral de casos laborales complejos, emisión de diagnósticos consensuados y determinación de aptitudes laborales con respaldo técnico profesional.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Evaluación Interdisciplinaria</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">📅</div>
-                    <div class="info-servicio">
-                        <h3>Examen Post Licencia Prolongada</h3>
-                        <p>Evaluación médica efectuada luego de una ausencia laboral extendida por motivos de salud, con el objetivo de determinar la aptitud del trabajador para retomar sus tareas habituales de manera segura y acorde a sus condiciones actuales.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="auditoria">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="5" r="2"></circle><path d="m9 20 3-6 3 6"></path><path d="m6 8 6 2 6-2"></path><path d="M12 10v4"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Asesoramiento en Ergonomía</h3>
+            </div>
+            <p class="service-desc">Servicio orientado a la evaluación y adaptación de los puestos de trabajo, con el objetivo de optimizar las condiciones laborales, prevenir lesiones musculoesqueléticas y mejorar el bienestar, la seguridad y el rendimiento de los trabajadores.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Ergonomía y Postura</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🏥</div>
-                    <div class="info-servicio">
-                        <h3>Juntas Medicas interdisciplinarias</h3>
-                        <p>Evaluaciones realizadas por un equipo profesional conformado por distintas especialidades médicas, orientadas al análisis integral de casos laborales complejos, emisión de diagnósticos consensuados y determinación de aptitudes laborales con respaldo técnico profesional.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="auditoria">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Determinación de Incapacidad Laboral y Daño Corporal</h3>
+            </div>
+            <p class="service-desc">Evaluación médico-laboral destinada a establecer el grado de incapacidad y las secuelas derivadas de accidentes o enfermedades profesionales, mediante criterios técnicos y normativos que permiten valorar el impacto funcional en la capacidad laboral del trabajador.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Valoración de Daño Corporal</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🧘</div>
-                    <div class="info-servicio">
-                        <h3>Asesoramiento en Ergonomia</h3>
-                        <p>Servicio orientado a la evaluación y adaptación de los puestos de trabajo, con el objetivo de optimizar las condiciones laborales, prevenir lesiones musculoesqueléticas y mejorar el bienestar, la seguridad y el rendimiento de los trabajadores.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="examenes">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"></path><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path><path d="M4 15v-3a6 6 0 0 1 6-6h0"></path><path d="M14 6h0a6 6 0 0 1 6 6v3"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Examen Preocupacional</h3>
+            </div>
+            <p class="service-desc">Evaluación médica realizada previo al ingreso laboral, destinada a determinar la aptitud del postulante en relación con las exigencias del puesto de trabajo. Este servicio puede llevarse a cabo tanto en consultorio como en campo, adaptándose a las necesidades operativas de cada institución o empresa.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Modalidad Consultorio y Campo</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"></path><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Capacitaciones en Bienestar Laboral</h3>
+            </div>
+            <p class="service-desc">Espacios formativos orientados a promover la salud integral dentro de las organizaciones, abordando hábitos saludables, autocuidado y prevención de riesgos, contribuyendo a mejorar el bienestar y el desempeño laboral.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Salud Integral</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">💔</div>
-                    <div class="info-servicio">
-                        <h3>Determinacion de incapacidad laboral y daño corporal</h3>
-                        <p>Evaluación médico-laboral destinada a establecer el grado de incapacidad y las secuelas derivadas de accidentes o enfermedades profesionales, mediante criterios técnicos y normativos que permiten valorar el impacto funcional en la capacidad laboral del trabajador.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Salud Mental en el Ámbito Laboral</h3>
+            </div>
+            <p class="service-desc">Capacitaciones destinadas a fortalecer la salud psicológica de los trabajadores, brindando herramientas para la gestión emocional, prevención del estrés y desarrollo de entornos laborales saludables.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Salud Psicológica</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Prevención del Estrés Laboral</h3>
+            </div>
+            <p class="service-desc">Programas educativos enfocados en comprender el impacto biológico y emocional del estrés, promoviendo estrategias prácticas para su prevención y manejo dentro del entorno laboral.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Manejo del Estrés</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Prevención del Riesgo Cardiovascular</h3>
+            </div>
+            <p class="service-desc">Jornadas de concientización orientadas a la detección de factores de riesgo y promoción de hábitos saludables que contribuyan al cuidado de la salud cardiovascular de los colaboradores.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Salud Cardíaca</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path><path d="M19 3v4"></path><path d="M21 5h-4"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Biología del Sueño y Descanso Saludable</h3>
+            </div>
+            <p class="service-desc">Capacitaciones que abordan la importancia del descanso adecuado como pilar fundamental para la salud, el rendimiento laboral y la prevención de enfermedades asociadas al cansancio crónico.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Higiene del Sueño</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🏗️</div>
-                    <div class="info-servicio">
-                        <h3>Examen preocupacional</h3>
-                        <p>Evaluación médica realizada previo al ingreso laboral, destinada a determinar la aptitud del postulante en relación con las exigencias del puesto de trabajo. Este servicio puede llevarse a cabo tanto en consultorio como en campo, adaptándose a las necesidades operativas de cada institución o empresa.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"></line>
+                </svg>
+              </div>
+              <h3 class="service-title">Políticas de Alcohol y Consumo de Sustancias</h3>
+            </div>
+            <p class="service-desc">Espacios de formación destinados a la prevención de consumos problemáticos, promoviendo la concientización, el cuidado personal y la construcción de ambientes laborales seguros.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Entornos Seguros</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Liderazgo, Comunicación y Buenas Prácticas Laborales</h3>
+            </div>
+            <p class="service-desc">Programas orientados al desarrollo de habilidades interpersonales, fortalecimiento del liderazgo y mejora de la comunicación organizacional para optimizar el clima laboral.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Clima Organizacional</span>
+          </div>
+        </article>
 
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path><path d="M2 12h3"></path><path d="M19 12h3"></path><path d="m4.93 4.93 2.12 2.12"></path><path d="m16.95 16.95 2.12 2.12"></path><path d="m19.07 4.93-2.12 2.12"></path><path d="m7.05 16.95-2.12 2.12"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Neurociencias Aplicadas al Ámbito Laboral</h3>
+            </div>
+            <p class="service-desc">Capacitaciones basadas en conocimientos neurocientíficos que permiten comprender conductas, toma de decisiones y procesos cognitivos para potenciar el rendimiento y bienestar organizacional.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Capacitación · Neurociencias</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🌱</div>
-                    <div class="info-servicio">
-                        <h3>Capacitaciones en Bienestar Laboral</h3>
-                        <p>Espacios formativos orientados a promover la salud integral dentro de las organizaciones, abordando hábitos saludables, autocuidado y prevención de riesgos, contribuyendo a mejorar el bienestar y el desempeño laboral.</p>
-                    </div>
-                </div>
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path>
+                </svg>
+              </div>
+              <h3 class="service-title">Capacitaciones InCompany</h3>
+            </div>
+            <p class="service-desc">Programas diseñados a medida de cada organización, desarrollados de forma presencial dentro de la empresa, adaptados a sus necesidades específicas y objetivos institucionales.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Modalidad Presencial en Planta</span>
+          </div>
+        </article>
 
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🧠</div>
-                    <div class="info-servicio">
-                        <h3>Salud Mental en el Ámbito Laboral</h3>
-                        <p>Capacitaciones destinadas a fortalecer la salud psicológica de los trabajadores, brindando herramientas para la gestión emocional, prevención del estrés y desarrollo de entornos laborales saludables.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🛡️</div>
-                    <div class="info-servicio">
-                        <h3>Prevención del Estrés Laboral</h3>
-                        <p>Programas educativos enfocados en comprender el impacto biológico y emocional del estrés, promoviendo estrategias prácticas para su prevención y manejo dentro del entorno laboral.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">❤️</div>
-                    <div class="info-servicio">
-                        <h3>Prevención del Riesgo Cardiovascular</h3>
-                        <p>Jornadas de concientización orientadas a la detección de factores de riesgo y promoción de hábitos saludables que contribuyan al cuidado de la salud cardiovascular de los colaboradores..</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">💤</div>
-                    <div class="info-servicio">
-                        <h3>Biología del Sueño y Descanso Saludable</h3>
-                        <p>Capacitaciones que abordan la importancia del descanso adecuado como pilar fundamental para la salud, el rendimiento laboral y la prevención de enfermedades asociadas al cansancio crónico.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🍺</div>
-                    <div class="info-servicio">
-                        <h3>Políticas de Alcohol y Consumo de Sustancias</h3>
-                        <p>Espacios de formación destinados a la prevención de consumos problemáticos, promoviendo la concientización, el cuidado personal y la construcción de ambientes laborales seguros.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🤝</div>
-                    <div class="info-servicio">
-                        <h3>Liderazgo, Comunicación y Buenas Prácticas Laborales</h3>
-                        <p>Programas orientados al desarrollo de habilidades interpersonales, fortalecimiento del liderazgo y mejora de la comunicación organizacional para optimizar el clima laboral.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🧠</div>
-                    <div class="info-servicio">
-                        <h3>Neurociencias Aplicadas al Ámbito Laboral</h3>
-                        <p>Capacitaciones basadas en conocimientos neurocientíficos que permiten comprender conductas, toma de decisiones y procesos cognitivos para potenciar el rendimiento y bienestar organizacional.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">🏗️</div>
-                    <div class="info-servicio">
-                        <h3>Capacitaciones InCompany</h3>
-                        <p>Programas diseñados a medida de cada organización, desarrollados de forma presencial dentro de la empresa, adaptados a sus necesidades específicas y objetivos institucionales.</p>
-                    </div>
-                </div>
-
-<div class="tarjeta-servicio">
-                    <div class="icono-servicio">💻</div>
-                    <div class="info-servicio">
-                        <h3>Capacitaciones Virtuales Sincrónicas</h3>
-                        <p>Encuentros formativos online en tiempo real que permiten el acceso flexible a contenidos de bienestar y salud laboral, manteniendo la interacción directa con los profesionales.</p>
-                    </div>
-                </div>
-
-
-        </div>
-
-        
-        <div class="volver">
-            <a href="index2.html"><button>Volver al Inicio</button></a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <p>&copy; CompromisoLaboral2026</p>
-    </div>
-</footer>
+        <article class="service-card" data-service-cat="capacitaciones">
+          <div>
+            <div class="service-header">
+              <div class="icon-box" aria-hidden="true">
+                <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line>
+                </svg>
+              </div>
+              <h3 class="service-title">Capacitaciones Virtuales Sincrónicas</h3>
+            </div>
+            <p class="service-desc">Encuentros formativos online en tiempo real que permiten el acceso flexible a contenidos de bienestar y salud laboral, manteniendo la interacción directa con los profesionales.</p>
+          </div>
+          <div class="infra-footer">
+            <span class="study-tag">Modalidad Online en Vivo</span>
+          </div>
+        </article>
+      </div>
+  </main>
 </body>
 </html>
